@@ -3,7 +3,7 @@ dataSources:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
     jdbcUrl: jdbc:mysql://127.0.0.1:3306/easylink?useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&allowMultiQueries=true&serverTimezone=Asia/Shanghai
-    # // TODO (JIA,2024/6/7,19:27) 数据库配置修改
+    # TODO (JIA,2024/6/7,19:27) 数据库配置修改
     username: root
     password: Ljf20031227
 
