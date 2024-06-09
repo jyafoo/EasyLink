@@ -1,0 +1,31 @@
+# 配置Spring Cloud Gateway的路由规则
+spring:
+  cloud:
+    gateway:
+      routes:
+        # 定义名为admin的路由规则
+        - id: admin
+          # 指向admin服务的负载均衡地址，用于处理所有以/api/short-link/admin/**开头的请求
+          uri: lb://admin/api/short-link/admin/**
+          # 定义路径匹配规则，即任何以/api/short-link/admin/**开头的请求都将匹配此路由
+          predicates:
+            - Path=/api/short-link/admin/**
+          # 配置Token验证过滤器，用于对请求进行权限验证
+          filters:
+            - name: TokenValidate
+              args:
+                # 配置白名单路径，这些路径将不受Token验证的限制
+                whitePathList:
+                  - /api/short-link/admin/v1/user/login
+                  - /api/short-link/admin/v1/user/has-username
+
+        # 定义名为project的路由规则
+        - id: project
+          # 指向project服务的负载均衡地址，用于处理所有以/api/short-link/**开头的请求
+          uri: lb://project/api/short-link/**
+          # 定义路径匹配规则，即任何以/api/short-link/**开头的请求都将匹配此路由
+          predicates:
+            - Path=/api/short-link/**
+          # 配置Token验证过滤器，用于对请求进行权限验证
+          filters:
+            - name: TokenValidate
