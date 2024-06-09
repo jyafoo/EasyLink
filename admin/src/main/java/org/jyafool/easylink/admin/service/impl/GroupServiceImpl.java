@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jyafool.easylink.admin.common.biz.user.UserContext;
 import org.jyafool.easylink.admin.common.convention.exception.ClientException;
 import org.jyafool.easylink.admin.common.convention.exception.ServiceException;
+import org.jyafool.easylink.admin.common.convention.result.Result;
 import org.jyafool.easylink.admin.dao.entity.GroupDO;
 import org.jyafool.easylink.admin.dao.entity.GroupUniqueDO;
 import org.jyafool.easylink.admin.dao.mapper.GroupMapper;
@@ -19,6 +20,8 @@ import org.jyafool.easylink.admin.dao.mapper.GroupUniqueMapper;
 import org.jyafool.easylink.admin.dto.req.ShortLinkGroupSortReqDTO;
 import org.jyafool.easylink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
 import org.jyafool.easylink.admin.dto.resp.ShortLinkGroupRespDTO;
+import org.jyafool.easylink.admin.remote.ShortLinkActualRemoteService;
+import org.jyafool.easylink.admin.remote.dto.resp.ShortLinkGroupCountQueryRespDTO;
 import org.jyafool.easylink.admin.service.GroupService;
 import org.jyafool.easylink.admin.toolkit.RandomGenerator;
 import org.redisson.api.RBloomFilter;
@@ -30,6 +33,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import static org.jyafool.easylink.admin.common.constant.RedisCacheConstant.LOCK_GROUP_CREATE_KEY;
 
@@ -49,7 +53,7 @@ public class GroupServiceImpl extends ServiceImpl<GroupMapper, GroupDO> implemen
      */
     private final RBloomFilter<String> gidRegisterCachePenetrationBloomFilter;
     private final GroupUniqueMapper groupUniqueMapper;
-    // private final ShortLinkActualRemoteService shortLinkActualRemoteService; todo 2
+    private final ShortLinkActualRemoteService shortLinkActualRemoteService;
     private final RedissonClient redissonClient;
 
     @Value("${short-link.group.max-num}")
@@ -98,10 +102,9 @@ public class GroupServiceImpl extends ServiceImpl<GroupMapper, GroupDO> implemen
         }
     }
 
-    // TODO (JIA,2024/6/7,20:23) 1
     @Override
     public List<ShortLinkGroupRespDTO> listGroup() {
-        /*LambdaQueryWrapper<GroupDO> queryWrapper = Wrappers.lambdaQuery(GroupDO.class)
+        LambdaQueryWrapper<GroupDO> queryWrapper = Wrappers.lambdaQuery(GroupDO.class)
                 .eq(GroupDO::getDelFlag, 0)
                 .eq(GroupDO::getUsername, UserContext.getUsername())
                 .orderByDesc(GroupDO::getSortOrder, GroupDO::getUpdateTime);
@@ -116,8 +119,7 @@ public class GroupServiceImpl extends ServiceImpl<GroupMapper, GroupDO> implemen
                     .findFirst();
             first.ifPresent(item -> each.setShortLinkCount(first.get().getShortLinkCount()));
         });
-        return shortLinkGroupRespDTOList;*/
-        return null;
+        return shortLinkGroupRespDTOList;
     }
 
     @Override
