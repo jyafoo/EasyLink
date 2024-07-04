@@ -19,6 +19,7 @@ package org.jyafool.easylink.project.config;
 
 
 import lombok.RequiredArgsConstructor;
+import org.jyafool.easylink.project.mq.consumer.ShortLinkStatsSaveConsumer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

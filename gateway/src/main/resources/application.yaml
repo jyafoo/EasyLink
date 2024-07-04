@@ -2,11 +2,11 @@ server:
   port: 8000
 spring:
   application:
-    name: gateway
+    name: easylink-gateway
   profiles:
     # 启动方式
-    active: aggregation
-    # active: dev
+#    active: aggregation
+    active: dev
   data:
     redis:
       host: 127.0.0.1

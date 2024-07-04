@@ -32,7 +32,7 @@ short-link:
     time-window: 1
     max-access-count: 5
   domain:
-    default: jia.easyink:8003
+    default: nurl.ink:8003
   stats:
     locale:
       amap-key: 824c511f0997586ea016f979fdb23087

@@ -20,6 +20,7 @@ package org.jyafool.easylink.project.dto.req;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import lombok.Data;
+import org.jyafool.easylink.project.dao.entity.LinkAccessLogsDO;
 
 /**
  * 分组短链接监控访问记录请求参数

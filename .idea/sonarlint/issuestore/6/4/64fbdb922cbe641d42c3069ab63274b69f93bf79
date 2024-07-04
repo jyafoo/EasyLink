@@ -1,0 +1,10 @@
+
+Œ
+java:S1192T"KDefine a constant instead of duplicating this literal "User-Agent" 3 times.(—œàõùÿÿÿÿJ$a149ba3c-610f-4abd-b315-4779f7e895f1
+‰
+java:S1192;"HDefine a constant instead of duplicating this literal "unknown" 5 times.(Ä”´àûÿÿÿÿJ$f7834a54-7a59-4775-beeb-73c757721443
+u
+java:S1118%":Add a private constructor to hide the implicit public one.(’í®3J$34deb029-1bcf-4d81-88ba-1d6271983bf5
+Œ
+java:S3252¤"OUse static access with "cn.hutool.core.text.CharSequenceUtil" for "isNotBlank".(ÿ¤ªóJ$5aa14df1-cf54-4fd1-a217-8bbb0f9e39c3
+j	java:S108ª")Either remove or fill this block of code.(Æ¸Û‚øÿÿÿÿJ$08329f72-e4b4-46e8-8ad9-2e5a5a87bc75

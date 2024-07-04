@@ -4,9 +4,9 @@ spring:
     gateway:
       routes:
         # 定义名为admin的路由规则
-        - id: admin
+        - id: easylink-admin
           # 指向admin服务的负载均衡地址，用于处理所有以/api/short-link/admin/**开头的请求
-          uri: lb://admin/api/short-link/admin/**
+          uri: lb://easylink-admin/api/short-link/admin/**
           # 定义路径匹配规则，即任何以/api/short-link/admin/**开头的请求都将匹配此路由
           predicates:
             - Path=/api/short-link/admin/**
@@ -20,9 +20,9 @@ spring:
                   - /api/short-link/admin/v1/user/has-username
 
         # 定义名为project的路由规则
-        - id: project
+        - id: easylink-project
           # 指向project服务的负载均衡地址，用于处理所有以/api/short-link/**开头的请求
-          uri: lb://project/api/short-link/**
+          uri: lb://easylink-project/api/short-link/**
           # 定义路径匹配规则，即任何以/api/short-link/**开头的请求都将匹配此路由
           predicates:
             - Path=/api/short-link/**

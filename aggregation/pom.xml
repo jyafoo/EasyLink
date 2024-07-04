@@ -14,13 +14,13 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>admin</artifactId>
+            <artifactId>easylink-admin</artifactId>
             <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>project</artifactId>
+            <artifactId>easylink-project</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

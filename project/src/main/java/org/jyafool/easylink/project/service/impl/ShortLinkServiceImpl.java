@@ -284,6 +284,7 @@ public class ShortLinkServiceImpl extends ServiceImpl<ShortLinkMapper, ShortLink
                         .eq(ShortLinkDO::getDelFlag, 0)
                         .eq(ShortLinkDO::getDelTime, 0L)
                         .eq(ShortLinkDO::getEnableStatus, 0);
+
                 ShortLinkDO delShortLinkDO = ShortLinkDO.builder()
                         .delTime(System.currentTimeMillis())
                         .build();
@@ -306,14 +307,18 @@ public class ShortLinkServiceImpl extends ServiceImpl<ShortLinkMapper, ShortLink
                         .favicon(getFavicon(requestParam.getOriginUrl()))
                         .delTime(0L)
                         .build();
+
                 baseMapper.insert(shortLinkDO);
                 LambdaQueryWrapper<ShortLinkGotoDO> linkGotoQueryWrapper = Wrappers.lambdaQuery(ShortLinkGotoDO.class)
                         .eq(ShortLinkGotoDO::getFullShortUrl, requestParam.getFullShortUrl())
                         .eq(ShortLinkGotoDO::getGid, hasShortLinkDO.getGid());
+
                 ShortLinkGotoDO shortLinkGotoDO = shortLinkGotoMapper.selectOne(linkGotoQueryWrapper);
                 shortLinkGotoMapper.delete(linkGotoQueryWrapper);
                 shortLinkGotoDO.setGid(requestParam.getGid());
+
                 shortLinkGotoMapper.insert(shortLinkGotoDO);
+
             } finally {
                 rLock.unlock();
             }
